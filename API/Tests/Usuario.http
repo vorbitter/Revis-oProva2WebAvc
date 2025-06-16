@@ -6,9 +6,9 @@ POST {{baseUrl}}/api/usuario/cadastrar
 Content-Type: application/json
 
 {
-  "nome": "V",
-  "email": "v@example.com",
-  "senha": "123456",
+  "nome": "sneed",
+  "email": "sneed@example.com",
+  "senha": "sneed",
   "permissao": "ADMIN"
 }
 

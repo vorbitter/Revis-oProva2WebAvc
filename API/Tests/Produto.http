@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
   "quantidade": 10
 }
 
-### 4. Atualizar produto (requer token de USER ou ADMIN)
+### 4. Atualizar produto (requer token de USUARIO ou ADMIN)
 PUT {{baseUrl}}/api/produto/atualizar/1
 Content-Type: application/json
 Authorization: Bearer {{user_token}}

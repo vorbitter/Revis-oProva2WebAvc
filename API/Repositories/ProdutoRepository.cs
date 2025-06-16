@@ -16,18 +16,27 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<Produto?> BuscarProdutoPorId(int produtoId) => await _db.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == produtoId);
     public async Task<List<Produto>> BuscarTodosProdutos() => await _db.Produtos.ToListAsync();
-    public async Task CriarProduto(Produto produto) => await _db.Produtos.AddAsync(produto);
+    public async Task CriarProduto(Produto produto)
+    {
+        await _db.Produtos.AddAsync(produto);
+        await _db.SaveChangesAsync();
+    }
     public async Task<Produto?> AtualizarProduto(Produto produto, int produtoId)
     {
         var produtoASerModificado = await _db.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == produtoId);
         if (produtoASerModificado is null)
             return null;
 
-        _db.Entry(produtoASerModificado).CurrentValues.SetValues(produto);
+        produtoASerModificado.Nome = produto.Nome;
+        produtoASerModificado.Descricao = produto.Descricao;
+        produtoASerModificado.Preco = produto.Preco;
+        produtoASerModificado.Quantidade = produto.Quantidade;
+
         await _db.SaveChangesAsync();
 
-        return produtoASerModificado; // Já foi modificado
+        return produtoASerModificado;
     }
+
 
     public async Task RemoverProdutoPorId(int produtoId)
     {
