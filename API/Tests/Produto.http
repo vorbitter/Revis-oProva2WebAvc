@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:5247
+
+### 1. Listar todos os produtos
+GET {{baseUrl}}/api/produto/listar
+
+### 2. Buscar produto por ID
+GET {{baseUrl}}/api/produto/listar/1
+Accept: application/json
+
+### 3. Criar novo produto
+POST {{baseUrl}}/api/produto/cadastrar
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoic25lZWRAc25lZWRtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVTVUFSSU8iLCJleHAiOjE3NTAwODcyOTN9.BmqBvh3MyPtQq5N6LyPLDx6pdfCcnkv1NAbxPGDM3Ow
+
+{
+  "nome": "Produto Teste",
+  "descricao": "Descrição do produto",
+  "preco": 99.99,
+  "quantidade": 10
+}
+
+### 4. Atualizar produto (requer token de USER ou ADMIN)
+PUT {{baseUrl}}/api/produto/atualizar/1
+Content-Type: application/json
+Authorization: Bearer {{user_token}}
+
+{
+  "nome": "Produto Atualizado",
+  "descricao": "Nova descrição do produto",
+  "preco": 120.00,
+  "estoque": 40
+}
+
+### 5. Deletar produto (requer token de ADMIN)
+DELETE {{baseUrl}}/api/produto/deletar/1
+Authorization: Bearer {{admin_token}}

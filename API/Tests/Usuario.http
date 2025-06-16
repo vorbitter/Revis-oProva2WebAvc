@@ -1,0 +1,30 @@
+### Base URL
+@baseUrl = http://localhost:5247
+
+### 1. Cadastrar novo usuário
+POST {{baseUrl}}/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "V",
+  "email": "v@example.com",
+  "senha": "123456",
+  "permissao": "ADMIN"
+}
+
+###
+
+### 2. Login com o usuário cadastrado (gera token)
+POST {{baseUrl}}/api/usuario/login
+Content-Type: application/json
+
+{
+  "email": "sneed@sneedmail.com",
+  "senha": "sneed"
+}
+
+###
+
+### 3. Listar todos os usuários
+GET {{baseUrl}}/api/usuario/listar
+Accept: application/json

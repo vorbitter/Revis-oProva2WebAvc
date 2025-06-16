@@ -1,0 +1,1 @@
+Para visualizar arquivos de markdown no vscode: Ctrl + Shift + v.
